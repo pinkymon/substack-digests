@@ -212,8 +212,8 @@ def save_summary(summary: str, post_count: int, pub_count: int) -> Path:
 def push_to_github(file_path: Path) -> None:
     """Commit and push the digest file to GitHub."""
     import subprocess
-    repo_root = Path(__file__).parent
-    rel_path = file_path.relative_to(repo_root)
+    repo_root = Path(__file__).parent.resolve()
+    rel_path = file_path.resolve().relative_to(repo_root)
     today_str = datetime.now().strftime("%Y-%m-%d")
 
     cmds = [
